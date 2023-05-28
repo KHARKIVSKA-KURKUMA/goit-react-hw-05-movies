@@ -1,0 +1,29 @@
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+const BASE_URL = 'https://api.themoviedb.org/3/';
+const API_KEY = 'dd2eacab57962d131eb2537d52aeafc3';
+
+async function getFilmByKeyWord(search) {
+  try {
+    //   const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=${lang}&page=${page}&include_adult=false&query=${search}`;
+    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en&page=1&include_adult=false&query=${search}`;
+    const response = await axios.get(url);
+    return await response.data;
+  } catch (error) {
+    toast.error('Oops, an error occurred');
+  }
+}
+export { getFilmByKeyWord };
+async function getPopular() {
+  try {
+    // const url = `${BASE_URL}trending/all/day?api_key=${API_KEY}&language=${id}&page=${page}`;
+    const url = `${BASE_URL}trending/all/day?api_key=${API_KEY}&language=en`;
+    const response = await axios.get(url);
+    return await response.data;
+  } catch (error) {
+    toast.error('Oops, an error occurred');
+  }
+}
+
+export { getPopular };
