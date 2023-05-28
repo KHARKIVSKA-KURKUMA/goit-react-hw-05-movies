@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormContainer, SearchButton, SearchInput } from './Movies.styled';
 import { getFilmByKeyWord } from 'API/fetchMovie';
 import MovieGallery from './MovieGallery';

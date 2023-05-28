@@ -1,9 +1,7 @@
-import Cast from 'components/Cast/Cast';
 import Header from 'components/Header/Header';
 import Home from 'components/Home/Home';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import Movies from 'components/Movies/Movies';
-import Reviews from 'components/Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
