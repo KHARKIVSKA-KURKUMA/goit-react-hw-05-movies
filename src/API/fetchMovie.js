@@ -6,7 +6,6 @@ const API_KEY = 'dd2eacab57962d131eb2537d52aeafc3';
 
 async function getFilmByKeyWord(search) {
   try {
-    //   const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=${lang}&page=${page}&include_adult=false&query=${search}`;
     const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en&page=1&include_adult=false&query=${search}`;
     const response = await axios.get(url);
     return await response.data;
@@ -27,3 +26,14 @@ async function getPopular() {
 }
 
 export { getPopular };
+
+async function getFilmDetails(id) {
+  try {
+    const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
+    const response = await axios.get(url);
+    return await response.data;
+  } catch (error) {
+    toast.error('Oops, an error occurred');
+  }
+}
+export { getFilmDetails };

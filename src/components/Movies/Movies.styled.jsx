@@ -48,7 +48,7 @@ export const MovieList = styled.ul`
   margin-top: 30px;
 `;
 
-export const MovieItem = styled(Link)`
+export const MovieItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,4 +71,7 @@ export const MovieTitle = styled.span`
 export const MovieImage = styled.img`
   width: 300px;
   height: 380px;
+`;
+export const LinkToMovie = styled(Link)`
+  text-decoration: none;
 `;

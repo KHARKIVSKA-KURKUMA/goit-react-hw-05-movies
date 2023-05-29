@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const MainContainer = styled.main`
@@ -25,13 +26,15 @@ export const List = styled.ul`
   padding: 0;
 `;
 
-export const ListItem = styled.li`
+export const ListItem = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #faf4c7;
   padding: 15px;
   height: 100px;
+  text-decoration: none;
+  color: #000000;
   font-size: 18px;
   &:hover {
     transform: scale(1.03);

@@ -7,8 +7,10 @@ import {
   SectionContainer,
 } from './Home.styled';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
+  const location = useLocation();
   /* ---------------------------------- STATE --------------------------------- */
   const [popularMoviesArr, setPopularMoviesArr] = useState([]);
   /* -------------------------------------------------------------------------- */
@@ -22,7 +24,9 @@ const Home = () => {
         <Heading>Trending Today</Heading>
         <List>
           {popularMoviesArr.map(({ original_title, original_name, id }) => (
-            <ListItem key={id}>{original_title ?? original_name}</ListItem>
+            <ListItem to={`/movies/${id}`} state={{ from: location }} key={id}>
+              {original_title ?? original_name}
+            </ListItem>
           ))}
         </List>
       </SectionContainer>
