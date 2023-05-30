@@ -30,6 +30,7 @@ export const Genres = styled.p`
 export const Desc = styled.p`
   margin: 0;
   font-weight: 400;
+  line-height: 1.4;
 `;
 export const LinksMenu = styled.ul`
   list-style: none;

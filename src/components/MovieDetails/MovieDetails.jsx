@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import {
   Container,
   Desc,
@@ -19,7 +19,6 @@ import { genresDetail } from 'additional/fenresEditor';
 import BackBtn from 'components/BackBtn/BackBtn';
 
 const MovieDetails = () => {
-  const location = useLocation();
   const [movieData, setMovieData] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
@@ -28,7 +27,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      {movieData ? (
+      {movieData && (
         <>
           <BackBtn />
           <Container>
@@ -51,22 +50,13 @@ const MovieDetails = () => {
             </InfoWrap>
           </Container>
         </>
-      ) : (
-        <h2>No data</h2>
       )}
       <LinksMenu>
         <LinksItem>
-          <StyledLink to={`/movies/${movieId}/cast`} state={{ from: location }}>
-            Cast
-          </StyledLink>
+          <StyledLink to={`/movies/${movieId}/cast`}>Cast</StyledLink>
         </LinksItem>
         <LinksItem>
-          <StyledLink
-            to={`/movies/${movieId}/reviews`}
-            state={{ from: location }}
-          >
-            Reviews
-          </StyledLink>
+          <StyledLink to={`/movies/${movieId}/reviews`}>Reviews</StyledLink>
         </LinksItem>
       </LinksMenu>
       <Outlet />

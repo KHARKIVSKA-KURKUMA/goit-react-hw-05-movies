@@ -4,13 +4,13 @@ import Layout from 'components/Layout/Layout';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import Movies from 'components/Movies/Movies';
 import Reviews from 'components/Reviews/Reviews';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
     <>
-      <ToastContainer></ToastContainer>
+      <ToastContainer autoClose={1500} theme="colored" />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

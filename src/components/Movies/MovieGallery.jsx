@@ -23,7 +23,7 @@ const MovieGallery = ({ array }) => {
                   alt={overview}
                 />
               ) : (
-                <MovieImage src={noPoster} alt={title}></MovieImage>
+                <MovieImage src={noPoster} alt={title} />
               )}
               <MovieTitle>{truncateTitle(title ?? name, 18)}</MovieTitle>
             </LinkToMovie>
