@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StyledUL = styled.ul`
   list-style: none;
   padding: 0;
+  margin-left: 20px;
+  margin-right: 60px;
 `;
 
 export const StyledLI = styled.li`
@@ -36,4 +38,8 @@ export const StyledImg = styled.img`
   display: block;
   height: auto;
   margin: 0 auto;
+`;
+export const StyledDiv = styled.div`
+  display: flex;
+  gap: 40px;
 `;

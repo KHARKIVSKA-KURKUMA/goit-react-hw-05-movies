@@ -7,6 +7,7 @@ import {
   StyledName,
   StyledUsername,
   StyledContent,
+  StyledDiv,
 } from './Reviews.styled';
 import NoReviews from '../../img/noReview.png';
 import { getFilmReview } from 'API/fetchMovie';
@@ -26,18 +27,29 @@ const Reviews = () => {
       {reviewArr.length !== 0 ? (
         reviewArr.map(({ author, author_details, name, content, id }) => (
           <StyledLI key={id}>
-            <div>
+            <StyledDiv>
               {author_details.avatar_path ? (
-                <StyledUserPic src={author_details.avatar_path} alt={name} />
+                author_details.avatar_path.includes('secure.gravatar.com') ? (
+                  <StyledUserPic
+                    src={`${author_details.avatar_path.substring(1)}`}
+                    alt={name}
+                  />
+                ) : (
+                  <StyledUserPic
+                    src={`https://themoviedb.org/t/p/w500${author_details.avatar_path}`}
+                    alt={name}
+                  />
+                )
               ) : (
                 <StyledUserPic src={noPhoto} alt="No photo" />
               )}
+
               <div>
                 <StyledName>{name ?? author}</StyledName>
                 <StyledUsername>{author_details.username}</StyledUsername>
-                <StyledContent>{content}</StyledContent>
               </div>
-            </div>
+            </StyledDiv>
+            <StyledContent>{content}</StyledContent>
           </StyledLI>
         ))
       ) : (
