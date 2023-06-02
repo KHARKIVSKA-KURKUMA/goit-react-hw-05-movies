@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'dd2eacab57962d131eb2537d52aeafc3';
 
-async function getFilmByKeyWord(search) {
+async function getFilmByKeyWord(search, page) {
   try {
-    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en&page=1&include_adult=false&query=${search}`;
+    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en&page=${page}&include_adult=false&query=${search}`;
     const response = await axios.get(url);
     return await response.data;
   } catch (error) {

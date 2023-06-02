@@ -1,3 +1,4 @@
+import React from 'react';
 import { truncateTitle } from 'additional/truncateTitle';
 import {
   MovieImage,
@@ -8,13 +9,14 @@ import {
 } from './Movies.styled';
 import noPoster from 'img/noposter.jpg';
 import { useLocation } from 'react-router-dom';
+import LoadMore from 'components/LoadMoreButton/LoadMore';
 
-const MovieGallery = ({ array }) => {
+const MovieGallery = ({ array, onClickHandleMore, page, totalPage }) => {
   const location = useLocation();
   return (
-    <MovieList>
-      {array &&
-        array.map(({ title, name, id, overview, poster_path }) => (
+    <>
+      <MovieList>
+        {array.map(({ title, name, id, overview, poster_path }) => (
           <MovieItem key={id}>
             <LinkToMovie to={`/movies/${id}`} state={{ from: location }}>
               {poster_path !== null ? (
@@ -25,11 +27,15 @@ const MovieGallery = ({ array }) => {
               ) : (
                 <MovieImage src={noPoster} alt={title} />
               )}
-              <MovieTitle>{truncateTitle(title ?? name, 18)}</MovieTitle>
+              <MovieTitle>{truncateTitle(title ?? name, 28)}</MovieTitle>
             </LinkToMovie>
           </MovieItem>
         ))}
-    </MovieList>
+      </MovieList>
+      {page !== totalPage && page !== 0 && (
+        <LoadMore onClick={onClickHandleMore} />
+      )}
+    </>
   );
 };
 
