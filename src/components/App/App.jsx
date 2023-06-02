@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import React, { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 /* -------------------------------------------------------------------------- */
 const Layout = lazy(() => import('components/Layout/Layout'));
 const Home = lazy(() => import('components/Home/Home'));
@@ -13,7 +14,14 @@ const App = () => {
   return (
     <>
       <ToastContainer autoClose={1500} theme="colored" />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={Loading.standard('Loading...', {
+          backgroundColor: 'rgba(0, 0, 0, 0.603)',
+          svgSize: '100px',
+          svgColor: '#0e29f6',
+        })}
+      >
+        {Loading.remove()}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
