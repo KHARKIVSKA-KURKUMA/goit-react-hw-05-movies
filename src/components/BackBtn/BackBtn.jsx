@@ -10,6 +10,7 @@ const BackBtn = () => {
   useEffect(() => {
     if (state?.from) {
       const { pathname, search } = state.from;
+      console.log('search :>> ', search);
       setFrom(`${pathname}${search}`);
     }
   }, [state?.from]);
