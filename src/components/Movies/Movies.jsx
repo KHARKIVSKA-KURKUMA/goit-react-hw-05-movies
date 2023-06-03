@@ -14,11 +14,12 @@ const Movies = () => {
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(null);
   const [queryParam, setQueryParam] = useSearchParams({});
+  const PARAM_QUERY = 'query';
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
-    const query = queryParam.get('query');
+    const query = queryParam.get(PARAM_QUERY);
     if (query) handleSearch(query);
-  }, []);
+  }, [queryParam]);
   /* --------------------------------- SUBMIT --------------------------------- */
   const handleSubmit = e => {
     e.preventDefault();
@@ -26,7 +27,7 @@ const Movies = () => {
     if (searchQuery.trim() === '') {
       return toast.error('Enter correct query');
     }
-    setQueryParam({ ['query']: searchQuery });
+    setQueryParam({ [PARAM_QUERY]: searchQuery });
     getFilmByKeyWord(searchQuery, 1).then(data => {
       if (!data.results || data.results.length === 0) {
         toast.error('Oops. Did not match any movies.');
